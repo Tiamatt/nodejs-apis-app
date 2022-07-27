@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "8ef04e9e-7fb4-4f69-b486-424ec02a1864",
+		"name": "NODEJS-APIS-APP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET /posts-kali",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/feed/posts-kali",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"feed",
+						"posts-kali"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /post-kali",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"My new post\", \n\t\"content\": \"Run Forrest run!\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/feed/post-kali",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"feed",
+						"post-kali"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

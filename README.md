@@ -4,10 +4,7 @@ Build with NodeJS + Express
 
 ## Features
 
-- CRUD operations and endpoints
 - validation
-- authentication
-- image upload
 
 ## How to run
 

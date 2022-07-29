@@ -4,9 +4,9 @@ const { validationResult } = require('express-validator'); // add for validation
 exports.getPostsKali = (req, res, next) => {
   const response = {
     posts: [
-      { 
-        title: 'List of posts', 
-        content: 'Here you go - the list of posts for you!' 
+      {
+        title: 'List of posts',
+        content: 'Here you go - the list of posts for you!'
       }
     ]
   };
@@ -15,28 +15,37 @@ exports.getPostsKali = (req, res, next) => {
 
 // implementation of POST /feed/post-kali
 exports.createPostKali = (req, res, next) => {
-  // return error status if request validation is failed
+  // throw an error if request is invalid
   // see implementation of validation in routes\feed.js
   const errors = validationResult(req);
-  if(!errors.isEmpty()) {
-    res
-      .status(422)
-      .json({
-        message: 'Validation failed, entered data is incorrect.',
-        errors: errors
-      });
-    return;  
+  if (!errors.isEmpty()) {
+    const error = new Error('Validation failed, entered data is incorrect.');
+    error.statusCode = 422; // this is a a custom property - name it as you want, e.g. statusCode
+    throw error;
   }
 
-  // return success status otherwise
-  const response = {
-    message: 'Your post has been created successfully!',
-    post: {
-      id: new Date().toISOString(),
-      title: req.body.title, 
-      content: req.body.content,
-      author: req.body.author
+  try {
+    const data = {
+        id: new Date().toISOString(),
+        title: req.body.title,
+        content: req.body.content,
+        author: req.body.author
+    };
+
+    // do something with data, e.g. save in db
+
+    // return the response
+    const response = {
+      message: 'Your post has been created successfully!',
+      data: data
+    };
+    res.status(201).json(response);
+
+  }
+  catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
     }
-  };
-  res.status(201).json(response);
+    next(err);
+  }
 };

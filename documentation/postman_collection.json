@@ -10,10 +10,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://localhost:8080/feed/posts-kali",
 					"protocol": "http",
@@ -43,7 +39,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"title\": \"My new post\", \n\t\"content\": \"Run Forrest run!\"\n}"
+					"raw": "{\n\t\"title\": \"My new post\", \n\t\"content\": \"Now, here, you see, it takes all the running you can do, to keep in the same place. If you want to get somewhere else, you must run at least twice as fast as that!\",\n    \"author\": {\n        \"name\": \"Red Queen\"\n    }\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/feed/post-kali",
